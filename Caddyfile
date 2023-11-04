@@ -1,0 +1,16 @@
+http:// {
+        tls internal
+        root * /var/www/vagrant-ubuntu-22.test
+        file_server
+        encode gzip
+
+        log {
+             	output file /var/log/caddy/example.access.log
+        }
+
+	@static {
+                file
+                path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.pdf *.webp
+        }
+	header @static Cache-Control max-age=5184000
+}
